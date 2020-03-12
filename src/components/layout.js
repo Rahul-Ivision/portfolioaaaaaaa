@@ -9,6 +9,12 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+
+import Skills from "./skills"
+import KnownLanguage from "./knownlanguage"
+import Education from "./education"
+import Testimonials from "./testimonials"
+
 import Header from "./header"
 import "./layout.css"
 
@@ -33,7 +39,47 @@ const Layout = ({ children }) => {
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
-        <main>{children}</main>
+        <main>
+          
+        <div className="container mt-4">
+  <div className="row">
+    <div className="col">
+
+    <div className="row">          
+          
+          {children}
+          
+          
+          <div className="secondary col-lg-4 col-12">
+                
+                
+                <Skills></Skills>
+                
+                
+
+                <Testimonials></Testimonials>
+
+                <Education></Education>
+                
+                            
+                <KnownLanguage></KnownLanguage>
+                
+                
+                
+               
+                
+               
+                
+              
+              
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>            
+          
+          </main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
