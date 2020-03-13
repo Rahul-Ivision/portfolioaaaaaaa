@@ -1,18 +1,14 @@
-
 import React from "react"
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { Link, graphql, useStaticQuery } from "gatsby"
 
 import { Helmet } from "react-helmet"
 
-
-const WorkExperience = () =>{
-
-  
-
-    const data = useStaticQuery(graphql`
-    query{
+const WorkExperience = () => {
+  const data = useStaticQuery(graphql`
+    query {
       contentfulAbout {
         workExperience {
+          id
           designation
           companyName
           from
@@ -23,37 +19,39 @@ const WorkExperience = () =>{
         }
       }
     }
-    `)
+  `)
 
-
-
-    
-      
-
-  return(
+  return (
     <section className="experience section">
-      
-    <div className="section-inner">
+      <div className="section-inner">
         <h2 className="heading">Work Experience</h2>
         <div className="content">
-
-        { 
-          data.contentfulAbout.workExperience.map((item)=>{
+          {data.contentfulAbout.workExperience.map(item => {
             return (
-              <div className="item">
-                <h3 className="title">{item.designation} - <span className="place">
-                  <a href="#">{item.companyName}</a></span> <span className="year">({item.from} - {item.to})</span></h3>
-                <p> {item.childContentfulExperienceDescriptionTextNode.description} </p>
-            </div>
+              <div className="item" key={item.id}>
+                <h3 className="title">
+                  {item.designation} -{" "}
+                  <span className="place">
+                    <a href="#">{item.companyName}</a>
+                  </span>{" "}
+                  <span className="year">
+                    ({item.from} - {item.to})
+                  </span>
+                </h3>
+                <p>
+                  {" "}
+                  {
+                    item.childContentfulExperienceDescriptionTextNode
+                      .description
+                  }{" "}
+                </p>
+              </div>
             )
-          })
-       }
-
+          })}
         </div>
-    </div>
-</section>
+      </div>
+    </section>
   )
 }
-
 
 export default WorkExperience
